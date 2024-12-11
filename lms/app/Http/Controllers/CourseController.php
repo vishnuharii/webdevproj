@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Students;
-use App\Http\Requests\StoreStudentsRequest;
-use App\Http\Requests\UpdateStudentsRequest;
+use App\Models\Course;
+use App\Http\Requests\StoreCourseRequest;
+use App\Http\Requests\UpdateCourseRequest;
 
-class StudentsController extends Controller
+class CourseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,6 @@ class StudentsController extends Controller
     public function index()
     {
         //
-        return view ('welcome',[
-            'student' => Students::all()
-        ]);
     }
 
     /**
@@ -30,7 +27,7 @@ class StudentsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreStudentsRequest $request)
+    public function store(StoreCourseRequest $request)
     {
         //
     }
@@ -38,7 +35,7 @@ class StudentsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Students $students)
+    public function show(Course $course)
     {
         //
     }
@@ -46,7 +43,7 @@ class StudentsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Students $students)
+    public function edit(Course $course)
     {
         //
     }
@@ -54,7 +51,7 @@ class StudentsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateStudentsRequest $request, Students $students)
+    public function update(UpdateCourseRequest $request, Course $course)
     {
         //
     }
@@ -62,7 +59,7 @@ class StudentsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Students $students)
+    public function destroy(Course $course)
     {
         //
     }
