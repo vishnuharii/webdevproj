@@ -1,44 +1,40 @@
-@extends('layouts/admin')
+@extends('layout.admin')
 @section('content')
-<div class="row">
-    <div class="col">
-        <h1 class="display-2">
-            Add a student
-        </h1>
-    </div>
-</div>
-
-<div class="row">
-    <form method="POST" action="{{ route('students.store') }}">
-        @if ($errors -> any())
-          <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors -> all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-          </div>
-        @endif
-
-        {{ csrf_field() }}
-        <div class="mb-3">
-          <label for="fname" class="form-label">First Name</label>
-          <input type="text" class="form-control" name="fname" id="fname" aria-describedby="fname">
+    <div class="row">
+        <div class="col">
+            <h2 class="display-2">
+                Add a student profile
+            </h2>
         </div>
-        <div class="mb-3">
-            <label for="lname" class="form-label">Last Name</label>
-            <input type="text" class="form-control" name="lname" id="lname" aria-describedby="lname">
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" name="email" id="email"  aria-describedby="email">
-            @error('email')
-                <span class="text-danger" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-          </div>
-        <button type="submit" class="btn btn-primary">Add Student</button>
-      </form>
-</div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <form action="{{ route('students.store') }}" method="POST">
+                {{ csrf_field() }}
+                <div class="mb-3">
+                    <label for="fname" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="fname" name="fname">
+                </div>
+                <div class="mb-3">
+                    <label for="lname" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lname" name="lname">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="text" class="form-control" id="email" name="email">
+                </div>
+                <div class="mb-3">
+                    <label for="course_name" class="form-label">Select Course</label>
+                    <div id="course_name">
+                        @foreach ($courses as $course)
+                            <div>
+                                <input type="checkbox" name="course_name[]" value="{{ $course->id }}" id="course_{{ $course->id }}">
+                                <label for="course_{{ $course->id }}">{{ $course->course_name }}</label>
+                            </div>
+                        @endforeach
+                    </div>
+                <button type="submit" class="btn btn-primary">Add Student</button>
+            </form>
+        </div>
+    </div>
 @endsection
